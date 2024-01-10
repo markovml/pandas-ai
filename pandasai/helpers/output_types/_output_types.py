@@ -141,3 +141,22 @@ class DefaultOutputType(BaseOutputType):
                 is supposed to have no validation
         """
         return True, ()
+
+
+class MKVDefaultOutputType(DefaultOutputType):
+    @property
+    def template_hint(self):
+        return """type (possible values "string", "number", "highchart config"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "highchart", "value": { chart: { type: 'line' }, title: { text: 'Simple Line Chart' }, xAxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May'] }, yAxis: { title: { text: 'Value' } }, series: [{ name: 'Data Series 1', data: [10, 15, 7, 8, 12] }] } }"""  # noqa E501
+
+
+class HighChartOutputType(BaseOutputType):
+    @property
+    def template_hint(self):
+        return """type (must be "highchart"), value must be highchart config. Example: { "type": "highchart", "value": { chart: { type: 'line' }, title: { text: 'Simple Line Chart' }, xAxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May'] }, yAxis: { title: { text: 'Value' } }, series: [{ name: 'Data Series 1', data: [10, 15, 7, 8, 12] }] } }"""  # noqa E501
+
+    @property
+    def name(self):
+        return "highchart"
+
+    def _validate_value(self, actual_value: Any) -> bool:
+        return True

@@ -7,6 +7,8 @@ from ._output_types import (
     PlotOutputType,
     StringOutputType,
     DefaultOutputType,
+    MKVDefaultOutputType,
+    HighChartOutputType,
 )
 from .. import Logger
 
@@ -16,6 +18,7 @@ output_types_map = {
     "dataframe": DataFrameOutputType,
     "plot": PlotOutputType,
     "string": StringOutputType,
+    "highchart": HighChartOutputType,
 }
 
 
@@ -27,6 +30,7 @@ def output_type_factory(
     PlotOutputType,
     StringOutputType,
     DefaultOutputType,
+    MKVDefaultOutputType,
 ]:
     """
     Factory function to get appropriate instance for output type.
@@ -47,7 +51,8 @@ def output_type_factory(
             DataFrameOutputType,
             PlotOutputType,
             StringOutputType,
-            DefaultOutputType
+            DefaultOutputType,
+            MKVDefaultOutputType
         ]): An instance of the output type.
     """
     if output_type is not None and output_type not in output_types_map and logger:
@@ -59,7 +64,7 @@ def output_type_factory(
             level=logging.WARNING,
         )
 
-    output_type_helper = output_types_map.get(output_type, DefaultOutputType)()
+    output_type_helper = output_types_map.get(output_type, MKVDefaultOutputType)()
 
     if logger:
         logger.log(
