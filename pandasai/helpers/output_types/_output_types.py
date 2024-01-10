@@ -148,7 +148,7 @@ class DefaultOutputType(BaseOutputType):
 class MKVDefaultOutputType(DefaultOutputType):
     @property
     def template_hint(self):
-        return """type (possible values "string", "number", "highchart config"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "highchart", "value": { chart: { type: 'line' }, title: { text: 'Simple Line Chart' }, xAxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May'] }, yAxis: { title: { text: 'Value' } }, series: [{ name: 'Data Series 1', data: [10, 15, 7, 8, 12] }] } }"""  # noqa E501
+        return """type (possible values "string", "number", "dataframe", "highchart config"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "highchart", "value": { chart: { type: 'line' }, title: { text: 'Simple Line Chart' }, xAxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May'] }, yAxis: { title: { text: 'Value' } }, series: [{ name: 'Data Series 1', data: [10, 15, 7, 8, 12] }] } }"""  # noqa E501
 
 
 class HighChartOutputType(BaseOutputType):
