@@ -155,68 +155,43 @@ class MKVDefaultOutputType(DefaultOutputType):
              or 
              { "type": "dataframe", "value": pd.DataFrame({...}) } 
              or 
-             { "type": "highchart", "value": { chart: { type: 'line' }, title: { text: 'Simple Line Chart' },
+             { "type": "highchart", "value": { chart: { type: 'line' }, 
+              title: { text: 'Simple Line Chart' },
               xAxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May'] }, 
               yAxis: { title: { text: 'Value' } }, 
               series: [{ name: 'Data Series 1', data: [10, 15, 7, 8, 12] }] 
               }  
-              or 
-                         
-            { "type": "highchart", "value": {     chart: {type: 'pie'},
-            title: {
-                text: 'Pie Chart Example'
+            or 
+            { "type": "highchart", "value": {chart: {type: 'heatmap'},
+            title: { text: 'Simple Heatmap Chart' },
+            xAxis: {
+                categories: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5']
             },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f}%'
-                    }
-                }
+            yAxis: {
+                categories: ['Value 1', 'Value 2', 'Value 3', 'Value 4', 'Value 5'],
+                title: null
             },
             series: [{
-                name: 'Brands',
-                colorByPoint: true,
-                data: [{
-                    name: 'Chrome',
-                    y: 61.41,
-                    sliced: true,
-                    selected: true
-                }, {
-                    name: 'Internet Explorer',
-                    y: 11.84
-                }, {
-                    name: 'Firefox',
-                    y: 10.85
-                }, {
-                    name: 'Edge',
-                    y: 4.67
-                }, {
-                    name: 'Safari',
-                    y: 4.18
-                }, {
-                    name: 'Other',
-                    y: 7.05
-                }]
-            }]
-        } 
-        or 
-    { "type": "highchart", "value": {    chart: {type: 'bubble'},
-    title: {
-        text: 'Bubble Chart Example'
-    },
-    xAxis: {
+                data: [
+                    [0, 0, 10], [0, 1, 19], [0, 2, 8], [0, 3, 24],
+                    [1, 0, 92], [1, 1, 58], [1, 2, 78], [1, 3, 117],
+                    [2, 0, 35], [2, 1, 15], [2, 2, 123], [2, 3, 64],
+                    [3, 0, 72], [3, 1, 132], [3, 2, 114], [3, 3, 19]
+                ]
+            }]}
+            or
+        { "type": "highchart", "value": { chart: {type: 'bubble'},
+          title: {text: 'Bubble Chart Example'},
+        xAxis: {
         title: {
             text: 'X-axis'
         }
-    },
-    yAxis: {
-        title: {
-            text: 'Y-axis'
-        }
-    },
+        },
+        yAxis: {
+            title: {
+                text: 'Y-axis'
+            }
+        },
     series: [{
         data: [
             [9, 81, 63],
@@ -224,18 +199,24 @@ class MKVDefaultOutputType(DefaultOutputType):
             [51, 50, 73],
             [41, 22, 14],
             [58, 24, 20],
-            [78, 37, 34],
-            [55, 56, 53],
-            [18, 45, 70],
-            [42, 44, 28],
-            [3, 52, 59],
-            [31, 18, 97],
-            [79, 91, 63],
-            [93, 23, 23],
-            [44, 83, 22]
+            [78, 37, 34]
         ]
     }]
-    }"""  # noqa E501
+         }  
+    or 
+    { "type": "highchart", "value": { chart: {type: 'pie'},
+    title: { text: 'Simple Pie Chart' },
+    series: [{
+        data: [
+            ['Chrome', 61.41],
+            ['Firefox', 10.85],
+            ['Edge', 4.67],
+            ['Safari', 4.18],
+            ['Other', 7.05]
+        ]
+    }]
+              }  
+    """  # noqa E501
 
 
 class HighChartOutputType(BaseOutputType):
