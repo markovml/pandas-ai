@@ -166,21 +166,38 @@ class MKVDefaultOutputType(DefaultOutputType):
             or 
             { "type": "highchart", "value": {chart: {type: 'heatmap'},
             title: { text: 'Simple Heatmap Chart' },
+            colorAxis: {
+                stops: [
+                    [0, '#4e79a7'], // Lightest color
+                    [0.5, '#f28e2c'], // Middle color
+                    [1, '#e15759'] // Darkest color
+                ]
+            },
             xAxis: {
-                categories: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5']
+                categories: ['Category 1', 'Category 2', 'Category 3'] // X-axis categories
             },
             yAxis: {
-                categories: ['Value 1', 'Value 2', 'Value 3', 'Value 4', 'Value 5'],
+                categories: ['Label 1', 'Label 2', 'Label 3'], // Y-axis categories
                 title: null
             },
             series: [{
                 data: [
-                    [0, 0, 10], [0, 1, 19], [0, 2, 8], [0, 3, 24],
-                    [1, 0, 92], [1, 1, 58], [1, 2, 78], [1, 3, 117],
-                    [2, 0, 35], [2, 1, 15], [2, 2, 123], [2, 3, 64],
-                    [3, 0, 72], [3, 1, 132], [3, 2, 114], [3, 3, 19]
-                ]
-            }]}
+                    [0, 0, 10], // x, y, value
+                    [0, 1, 20],
+                    [0, 2, 30],
+                    [1, 0, 40],
+                    [1, 1, 50],
+                    [1, 2, 60],
+                    [2, 0, 70],
+                    [2, 1, 80],
+                    [2, 2, 90]
+                ],
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000'
+                }
+            }]
+            }
             or
         { "type": "highchart", "value": { chart: {type: 'bubble'},
           title: {text: 'Bubble Chart Example'},
@@ -217,7 +234,26 @@ class MKVDefaultOutputType(DefaultOutputType):
             ['Other', 7.05]
         ]
     }]
-              }  
+    }}
+    or
+    {"type":"highchart","value":{    chart: {type: 'table'},
+    title: {text: 'Table Example'},
+    xAxis: {
+        categories: ['Category 1', 'Category 2', 'Category 3']
+    },
+    yAxis: {
+        visible: false
+    },
+    series: [{
+        name: 'Label 1',
+        data: [10, 20, 30]
+    }, {
+        name: 'Label 2',
+        data: [40, 50, 60]
+    }, {
+        name: 'Label 3',
+        data: [70, 80, 90]
+    }]}  
     """  # noqa E501
 
 
