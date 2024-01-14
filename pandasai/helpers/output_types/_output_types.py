@@ -146,13 +146,105 @@ class DefaultOutputType(BaseOutputType):
 class MKVDefaultOutputType(DefaultOutputType):
     @property
     def template_hint(self):
-        return """type (possible values "string", "number", "dataframe", "highchart config"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "highchart", "value": { chart: { type: 'line' }, title: { text: 'Simple Line Chart' }, xAxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May'] }, yAxis: { title: { text: 'Value' } }, series: [{ name: 'Data Series 1', data: [10, 15, 7, 8, 12] }] } }"""  # noqa E501
+        return """type (possible values "string", 
+        "number", "dataframe", "highchart config").
+         Examples: 
+             { "type": "string", "value": f"The highest salary is {highest_salary}." } 
+             or 
+             { "type": "number", "value": 125 } 
+             or 
+             { "type": "dataframe", "value": pd.DataFrame({...}) } 
+             or 
+             { "type": "highchart", "value": { chart: { type: 'line' }, title: { text: 'Simple Line Chart' },
+              xAxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May'] }, 
+              yAxis: { title: { text: 'Value' } }, 
+              series: [{ name: 'Data Series 1', data: [10, 15, 7, 8, 12] }] 
+              }  
+              or 
+                         
+            { "type": "highchart", "value": {     chart: {type: 'pie'},
+            title: {
+                text: 'Pie Chart Example'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f}%'
+                    }
+                }
+            },
+            series: [{
+                name: 'Brands',
+                colorByPoint: true,
+                data: [{
+                    name: 'Chrome',
+                    y: 61.41,
+                    sliced: true,
+                    selected: true
+                }, {
+                    name: 'Internet Explorer',
+                    y: 11.84
+                }, {
+                    name: 'Firefox',
+                    y: 10.85
+                }, {
+                    name: 'Edge',
+                    y: 4.67
+                }, {
+                    name: 'Safari',
+                    y: 4.18
+                }, {
+                    name: 'Other',
+                    y: 7.05
+                }]
+            }]
+        } 
+        or 
+    { "type": "highchart", "value": {    chart: {type: 'bubble'},
+    title: {
+        text: 'Bubble Chart Example'
+    },
+    xAxis: {
+        title: {
+            text: 'X-axis'
+        }
+    },
+    yAxis: {
+        title: {
+            text: 'Y-axis'
+        }
+    },
+    series: [{
+        data: [
+            [9, 81, 63],
+            [98, 5, 89],
+            [51, 50, 73],
+            [41, 22, 14],
+            [58, 24, 20],
+            [78, 37, 34],
+            [55, 56, 53],
+            [18, 45, 70],
+            [42, 44, 28],
+            [3, 52, 59],
+            [31, 18, 97],
+            [79, 91, 63],
+            [93, 23, 23],
+            [44, 83, 22]
+        ]
+    }]
+    }"""  # noqa E501
 
 
 class HighChartOutputType(BaseOutputType):
     @property
     def template_hint(self):
-        return """type (must be "highchart"), value must be highchart config. Example: { "type": "highchart", "value": { chart: { type: 'line' }, title: { text: 'Simple Line Chart' }, xAxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May'] }, yAxis: { title: { text: 'Value' } }, series: [{ name: 'Data Series 1', data: [10, 15, 7, 8, 12] }] } }"""  # noqa E501
+        return """type (must be "highchart"), value must be highchart config. 
+        Example: { "type": "highchart", "value": { chart: { type: 'line' }, 
+        title: { text: 'Simple Line Chart' }, xAxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May'] },
+         yAxis: { title: { text: 'Value' } }, series: [{ name: 'Data Series 1', data: [10, 15, 7, 8, 12] }] } }"""  # noqa E501
 
     @property
     def name(self):
