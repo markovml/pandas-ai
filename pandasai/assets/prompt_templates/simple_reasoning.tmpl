@@ -4,9 +4,7 @@ At the end, declare "result" variable as a dictionary of type and value.
 {instructions}
 
 Generate python code and return full updated code:
-(NOTE:Generate valid Highchart configurations exclusively when requested to plot, show, or display data.
-In cases related to visual representation, always provide a "result" of type "high-chart.
-For responses that can be presented in tabular form, like correlations, non plot relationships between two variable,
-ensure the provision of a valid dataframe. Do not use libraries like matplotlib or plotly.)
-
-
+(Note: Don't write code which uses matplotlib or using any other similar libraries.
+If the question asks to make a plot, display, show or something similar generate "result" of type "highchart" only.
+For responses that can be presented in tabular form, like correlations, averages,and
+non plot relationships between two variable, generate a code to return a dataframe. )
