@@ -4,6 +4,8 @@ At the end, declare "result" variable as a dictionary of type and value.
 {instructions}
 
 Generate python code and return full updated code:
-(Note: Don't write code which uses matplotlib or using any other similar libraries.
-If the question asks to make a plot, display, show,describe or something similar generate "result" of type "highchart"
- only if possible otherwise return a dataframe.)
+NOTE: If the request is to plot, show, or display something similar generate "result" of type "high-chart" only.
+Make sure that for responses that can be plotted in a table such as correlations and similar return a valid dataframe.
+For responses that can be presented in tabular form, like correlations, return a dataframe.
+Do not use python libraries like matplotlib or plotly or similar.
+
