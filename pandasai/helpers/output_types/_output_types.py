@@ -122,7 +122,11 @@ class DefaultOutputType(BaseOutputType):
 
     @property
     def template_hint(self):
-        return """type (possible values "string", "number", "dataframe", "plot"). Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." } or { "type": "number", "value": 125 } or { "type": "dataframe", "value": pd.DataFrame({...}) } or { "type": "plot", "value": "temp_chart.png" }"""  # noqa E501
+        return """type (possible values "string", "number", "dataframe", "plot"). 
+        Examples: { "type": "string", "value": f"The highest salary is {highest_salary}." }
+         or { "type": "number", "value": 125 } 
+         or { "type": "dataframe", "value": pd.DataFrame({...}) } 
+         or { "type": "plot", "value": "temp_chart.png" }"""  # noqa E501
 
     @property
     def name(self):
@@ -148,23 +152,18 @@ class DefaultOutputType(BaseOutputType):
 class MKVDefaultOutputType(DefaultOutputType):
     @property
     def template_hint(self):
-        return """type (possible values "string", 
-        "number", "dataframe", "highchart config").
+        return """type (possible values are: "string", "number", "pandas dataframe", "highchart config").
          Examples: 
-             { "type": "string", "value": f"The highest salary is {highest_salary}." } 
-             or 
-             { "type": "number", "value": 125 } 
-             or 
-             { "type": "dataframe", "value": pd.DataFrame({...}) } 
-             or 
-             { "type": "highchart", "value": { chart: { type: 'line' }, 
+             {"type": "string", "value": f"The highest salary is {highest_salary}." } 
+             or { "type": "number", "value": 125 } 
+             or { "type": "dataframe", "value": pd.DataFrame({...}) } 
+             or{ "type": "highchart", "value": { chart: { type: 'line' }, 
               title: { text: 'Simple Line Chart' },
               xAxis: { categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May'] }, 
               yAxis: { title: { text: 'Value' } }, 
               series: [{ name: 'Data Series 1', data: [10, 15, 7, 8, 12] }] 
               }  
-            or 
-            { "type": "highchart", "value": {chart: {type: 'heatmap'},
+            or { "type": "highchart", "value": {chart: {type: 'heatmap'},
             title: { text: 'Simple Heatmap Chart' },
             colorAxis: {
                 stops: [
@@ -183,14 +182,6 @@ class MKVDefaultOutputType(DefaultOutputType):
             series: [{
                 data: [
                     [0, 0, 10], // x, y, value
-                    [0, 1, 20],
-                    [0, 2, 30],
-                    [1, 0, 40],
-                    [1, 1, 50],
-                    [1, 2, 60],
-                    [2, 0, 70],
-                    [2, 1, 80],
-                    [2, 2, 90]
                 ],
                 dataLabels: {
                     enabled: true,
@@ -198,62 +189,25 @@ class MKVDefaultOutputType(DefaultOutputType):
                 }
             }]
             }
-            or
-        { "type": "highchart", "value": { chart: {type: 'bubble'},
-          title: {text: 'Bubble Chart Example'},
-        xAxis: {
-        title: {
-            text: 'X-axis'
-        }
-        },
-        yAxis: {
-            title: {
-                text: 'Y-axis'
-            }
-        },
-    series: [{
-        data: [
-            [9, 81, 63],
-            [98, 5, 89],
-            [51, 50, 73],
-            [41, 22, 14],
-            [58, 24, 20],
-            [78, 37, 34]
-        ]
-    }]
-         }  
-    or 
-    { "type": "highchart", "value": { chart: {type: 'pie'},
-    title: { text: 'Simple Pie Chart' },
-    series: [{
-        data: [
-            ['Chrome', 61.41],
-            ['Firefox', 10.85],
-            ['Edge', 4.67],
-            ['Safari', 4.18],
-            ['Other', 7.05]
-        ]
-    }]
-    }}
-    or
-    {"type":"highchart","value":{    chart: {type: 'table'},
-    title: {text: 'Table Example'},
-    xAxis: {
-        categories: ['Category 1', 'Category 2', 'Category 3']
-    },
-    yAxis: {
-        visible: false
-    },
-    series: [{
-        name: 'Label 1',
-        data: [10, 20, 30]
-    }, {
-        name: 'Label 2',
-        data: [40, 50, 60]
-    }, {
-        name: 'Label 3',
-        data: [70, 80, 90]
-    }]}  
+            or { "type": "highchart", "value": { chart: {type: 'bubble'}, 
+                  title: {text: 'Bubble Chart Example'},
+                xAxis: {title: {text: 'X-axis'}},
+                yAxis: {title: {text: 'Y-axis'}},
+                series: [{data: [
+                                [9, 81, 63],
+                                [98, 5, 89],
+                                ]
+                        ]
+                }  
+    or { "type": "highchart", "value": { chart: {type: 'pie'},
+          title: { text: 'Simple Pie Chart' },
+          series: [{data: [
+                          ['Chrome', 61.41],
+                          ['Firefox', 10.85]
+                          ]
+                    }
+                  ]
+         } 
     """  # noqa E501
 
 
