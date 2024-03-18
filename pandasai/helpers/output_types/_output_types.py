@@ -150,6 +150,8 @@ class DefaultOutputType(BaseOutputType):
 
 
 class MKVDefaultOutputType(DefaultOutputType):
+    default_types = ["string", "number", "dataframe", "plot", "highchart", "highcharts"]
+
     @property
     def template_hint(self):
         return """type (possible values are: "string", "number", "pandas dataframe", "highchart config").
